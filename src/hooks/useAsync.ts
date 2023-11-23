@@ -95,7 +95,7 @@ export function useAsync<T>(
       .catch((err) => {
         dispatch({
           type: 'on_error',
-          error: new Error('Failed to confirm', { cause: err }),
+          error: new Error('Failed to load data', { cause: err }),
         });
         throw err;
       });
