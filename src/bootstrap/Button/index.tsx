@@ -1,5 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import { Link, LinkProps } from '../../components/Link';
 
 // @todo: type is repeated.
 type BootstrapColourVariants =
@@ -13,13 +14,14 @@ type BootstrapColourVariants =
   | 'light';
 
 type BootstrapButtonProps = {
-  type?: 'button' | 'submit';
-  variant: BootstrapColourVariants | 'link';
-  size?: 'sm' | 'lg';
-  fullWidth?: boolean;
-  outlined?: boolean;
-  isActive?: boolean;
   className?: string;
+  disabled?: boolean;
+  fullWidth?: boolean;
+  isActive?: boolean;
+  outlined?: boolean;
+  size?: 'sm' | 'lg';
+  type?: 'submit';
+  variant: BootstrapColourVariants | 'link';
 };
 
 function withButtonClasses<P = object>(
@@ -32,6 +34,7 @@ function withButtonClasses<P = object>(
     fullWidth,
     outlined,
     isActive,
+    disabled,
     ...props
   }) => (
     <Component
@@ -40,9 +43,10 @@ function withButtonClasses<P = object>(
         size && `btn-${size}`,
         fullWidth && 'w-100',
         outlined ? `btn-outline-${variant}` : `btn-${variant}`,
-        { active: isActive },
+        { active: isActive, disabled },
         className
       )}
+      aria-disabled={disabled}
       {...(props as unknown as P)}
     />
   );
@@ -52,17 +56,19 @@ function withButtonClasses<P = object>(
   return wrappedWithButtonClasses;
 }
 
-// export type LinkButtonProps = React.PropsWithChildren &
-//   LinkProps &
-//   BootstrapButtonProps;
-//
-// export const LinkButton: React.FC<LinkButtonProps> = withButtonClasses(
-//   (props) => <Link role="button" noLinkClass {...props} />
-// );
+export type LinkButtonProps = React.PropsWithChildren &
+  LinkProps &
+  BootstrapButtonProps;
+
+export const LinkButton: React.FC<LinkButtonProps> = withButtonClasses(
+  (props) => <Link role="button" {...props} />
+);
 
 export type ButtonProps = BootstrapButtonProps &
-  React.ButtonHTMLAttributes<HTMLButtonElement>;
+  React.ButtonHTMLAttributes<HTMLButtonElement> & { type?: 'submit' };
 
-export const Button: React.FC<ButtonProps> = withButtonClasses((props) => (
-  <button {...props} />
-));
+export const Button: React.FC<ButtonProps> = withButtonClasses(
+  ({ type, ...props }) => (
+    <button type={type === 'submit' ? 'submit' : 'button'} {...props} />
+  )
+);
