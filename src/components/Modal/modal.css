@@ -1,0 +1,101 @@
+.ww_modal-overflow_hidden {
+  overflow: hidden !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.ww_modal {
+  --ww-modal-header-color: #333;
+  --ww-modal-header-bg: #333;
+  --ww-modal-padding-base: 1rem;
+  --ww-modal-width: 640px;
+  --ww-modal-overlay-bg: rgb(0 0 0 / 50%);
+  --ww-modal-dialog-margin: 15px;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--ww-modal-overlay-bg);
+  outline: 0;
+}
+
+.ww_modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100% - (var(--ww-modal-dialog-margin) * 2));
+  max-width: var(--ww-modal-width);
+  margin: var(--ww-modal-dialog-margin);
+  width: auto;
+
+  /* Note: ww-modal-width + ww-modal-dialog-margin * 2 */
+  @media (min-width: 670px) {
+    margin: var(--ww-modal-dialog-margin) auto;
+  }
+
+  &::before {
+    display: block;
+    height: calc(100vh - (var(--ww-modal-dialog-margin) * 2));
+    content: '';
+  }
+}
+
+.ww_modal-content {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 30px rgb(0 0 0 / 45%);
+}
+
+.ww_modal-header {
+  display: block;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ww-modal-padding-base);
+}
+
+.ww_modal-header-close {
+  float: right;
+  margin-left: var(--ww-modal-padding-base);
+  background: transparent !important;
+  color: var(--ww-modal-header-color) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  appearance: none !important;
+  box-shadow: none !important;
+
+  &:focus,
+  &:hover,
+  &:focus-visible {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  svg {
+    height: 2rem !important;
+    width: 2rem !important;
+    fill: var(--ww-modal-header-color) !important;
+
+    &:focus,
+    &:hover,
+    &:focus-visible {
+      fill: #ff3c4b !important;
+    }
+  }
+}
+
+.ww_modal-header-title-h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.ww_modal-body {
+  padding: var(--ww-modal-padding-base);
+}

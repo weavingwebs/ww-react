@@ -12,6 +12,7 @@ import {
   useState,
 } from 'react';
 import { createPortal } from 'react-dom';
+import './modal.css';
 
 type ModalHeaderOptions = {
   options?: {
@@ -48,7 +49,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
           onClick={onClose}
           type="button"
           className={miniClsx(
-            'ww_modal-header-close_btn',
+            'ww_modal-header-close',
             options?.classNames?.closeBtn
           )}
         >
