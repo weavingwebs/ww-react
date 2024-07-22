@@ -5530,10 +5530,10 @@
     loupe "^2.3.6"
     pretty-format "^29.5.0"
 
-"@weavingwebs/ww-react-next@^0.1.2":
-  version "0.1.2"
-  resolved "https://npm.pkg.github.com/download/@weavingwebs/ww-react-next/0.1.2/2015430863b77d34617898e409067001970bd720#2015430863b77d34617898e409067001970bd720"
-  integrity sha512-hTb/15SNRJBf6TWF+oBfSWGD9hII5SA2onj2pJyPQC1aM/3rRuB0l7gBRt2XPLLYciqbbGyf9zihOJlffxhIOw==
+"@weavingwebs/ww-react-next@^0.1.3":
+  version "0.1.3"
+  resolved "https://npm.pkg.github.com/download/@weavingwebs/ww-react-next/0.1.3/326454bfcba2560dff7fe3f379eb6620c4ecdc08#326454bfcba2560dff7fe3f379eb6620c4ecdc08"
+  integrity sha512-PBaIC0NII531il8se/Uca0lbqiYKlSQo1ndDp+Z19BlJnXS4W4xv4izyd8qTuLjRs1PSXcpxKtzYpRBsOhyg9Q==
 
 "@webassemblyjs/ast@1.11.5", "@webassemblyjs/ast@^1.11.5":
   version "1.11.5"
