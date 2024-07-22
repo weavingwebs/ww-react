@@ -16,15 +16,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup npm auth
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PUBLIC_NPM_TOKEN }}" >> ~/.npmrc
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
           cache: 'yarn'
           registry-url: 'https://npm.pkg.github.com'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
 
       - name: Build and Deploy Storybook
         run: yarn deploy-storybook --ci
