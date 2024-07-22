@@ -13,6 +13,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { format, isValid, parse } from 'date-fns';
 import { formatInTimeZone, toDate } from 'date-fns-tz';
+import { PreventDirtyFormNavigate } from '@weavingwebs/ww-react-next';
 import { Button } from '../../bootstrap/Button';
 import {
   CustomerFragment,
@@ -21,7 +22,7 @@ import {
   GenderLabels,
 } from '../mocks';
 import { ErrorMessage, Loading } from '../../bootstrap';
-import { PreventDirtyFormNavigate } from '../../components/PreventDirtyFormNavigate';
+// @todo import from ww-react-next
 import { transformEmptyToNull } from '../../util/forms';
 import { useMemoOnce } from '../../hooks/useMemoOnce';
 import { BsFormInput } from '../../bootstrap/BsFormInput';

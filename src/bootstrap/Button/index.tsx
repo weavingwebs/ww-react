@@ -1,19 +1,8 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { Link, LinkProps } from '../../components/Link';
+import { BootstrapColourVariants } from '../colourVariants';
 
-// @todo: type is repeated.
-type BootstrapColourVariants =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'info'
-  | 'dark'
-  | 'light';
-
-type BootstrapButtonProps = {
+export type BootstrapButtonProps = {
   className?: string;
   disabled?: boolean;
   fullWidth?: boolean;
@@ -24,7 +13,7 @@ type BootstrapButtonProps = {
   variant: BootstrapColourVariants | 'link';
 };
 
-function withButtonClasses<P = object>(
+export function withButtonClasses<P = object>(
   Component: React.ComponentType<P>
 ): React.FC<P & BootstrapButtonProps> {
   const wrappedWithButtonClasses: React.FC<P & BootstrapButtonProps> = ({
@@ -55,14 +44,6 @@ function withButtonClasses<P = object>(
   })`;
   return wrappedWithButtonClasses;
 }
-
-export type LinkButtonProps = React.PropsWithChildren &
-  LinkProps &
-  BootstrapButtonProps;
-
-export const LinkButton: React.FC<LinkButtonProps> = withButtonClasses(
-  (props) => <Link role="button" {...props} />
-);
 
 export type ButtonProps = BootstrapButtonProps &
   React.ButtonHTMLAttributes<HTMLButtonElement> & { type?: 'submit' };
