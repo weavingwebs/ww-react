@@ -1,15 +1,6 @@
 import clsx from 'clsx';
 import { CSSProperties, FC } from 'react';
-
-type BootstrapColourVariants =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'danger'
-  | 'warning'
-  | 'info'
-  | 'dark'
-  | 'light';
+import { BootstrapColourVariants } from '../colourVariants';
 
 type LoadingType = 'border' | 'grow';
 

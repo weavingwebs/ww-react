@@ -4,6 +4,7 @@ import { useRouter } from 'next-router-mock';
 import { format } from 'date-fns';
 import { toDate } from 'date-fns-tz';
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider/next-13.5';
+import { useUrlFiltersWithPage } from '@weavingwebs/ww-react-next';
 import {
   BsFormLabel,
   FullPageLoading,
@@ -11,7 +12,6 @@ import {
   TableResultsWithPlaceholder,
 } from '../../bootstrap';
 import { getData, MockDataQueryResult } from '../mocks';
-import { useUrlFiltersWithPage } from '../../hooks';
 
 const parseDateTimeFromServer = (dateTimeStr: string): Date =>
   // IMPORTANT: This must use date-fns-tz to convert to local timezone.
