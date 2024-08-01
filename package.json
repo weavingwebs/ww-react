@@ -45,7 +45,7 @@
     "external": [
       "react"
     ],
-    "injectStyle": false
+    "injectStyle": true
   },
   "main": "./dist/cjs/index.js",
   "module": "./dist/index.mjs",
