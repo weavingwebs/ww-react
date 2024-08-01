@@ -8,50 +8,90 @@ import {
   useEffect,
   useId,
   useMemo,
+  useReducer,
   useRef,
-  useState,
 } from 'react';
 import { createPortal } from 'react-dom';
 import './modal.css';
 
-type ModalHeaderOptions = {
-  options?: {
-    classNames?: {
-      closeBtn?: string;
-      h1?: string;
-      header?: string;
-      title?: string;
-    };
-    disableCloseButton?: boolean;
-    hideCloseButton?: boolean;
-  };
+const miniClsx = (...classNames: Array<string | undefined | false>): string => {
+  return classNames.filter((f) => !!f).join(' ');
 };
 
-type ModalHeaderProps = ModalHeaderOptions &
-  PropsWithChildren & {
-    onClose: () => void;
-    title: string;
-  };
+type ModalReducerState = string[];
+
+type ModalReducerActionSet = {
+  newState: ModalReducerState;
+  type: 'set';
+};
+
+type ModalReducerActionAdd = {
+  item: string;
+  type: 'add';
+};
+
+type ModalReducerActionRemove = {
+  itemToRemove: string;
+  type: 'remove';
+};
+
+type ModalActions =
+  | ModalReducerActionSet
+  | ModalReducerActionAdd
+  | ModalReducerActionRemove;
+
+const modalReducer = (
+  s: ModalReducerState,
+  a: ModalActions
+): ModalReducerState => {
+  switch (a.type) {
+    case 'set': {
+      return a.newState;
+    }
+    case 'add': {
+      return [...s, a.item];
+    }
+    case 'remove': {
+      return s.filter((id) => id !== a.itemToRemove);
+    }
+    default: {
+      throw new Error('Unknown action type');
+    }
+  }
+};
+
+type ModalHeaderProps = PropsWithChildren & {
+  closeBtnClassName?: string;
+  disableCloseButton?: boolean;
+  h1ClassName?: string;
+  headerClassName?: string;
+  hideCloseButton?: boolean;
+  onClose: () => void;
+  title: string;
+  titleClassName?: string;
+};
 
 export const ModalHeader: FC<ModalHeaderProps> = ({
-  options,
+  closeBtnClassName,
+  titleClassName,
+  h1ClassName,
+  headerClassName,
+  disableCloseButton,
+  hideCloseButton,
   title,
   onClose,
   children,
 }) => {
   return (
-    <div className={miniClsx('ww_modal-header', options?.classNames?.header)}>
-      {!options?.hideCloseButton && (
+    <div className={miniClsx('ww_modal-header', headerClassName)}>
+      {!hideCloseButton && (
         <button
           aria-label="Close"
-          aria-disabled={options?.disableCloseButton}
-          disabled={options?.disableCloseButton}
+          aria-disabled={disableCloseButton}
+          disabled={disableCloseButton}
           onClick={onClose}
           type="button"
-          className={miniClsx(
-            'ww_modal-header-close',
-            options?.classNames?.closeBtn
-          )}
+          className={miniClsx('ww_modal-header-close', closeBtnClassName)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,18 +105,8 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
           </svg>
         </button>
       )}
-      <div
-        className={miniClsx(
-          'ww_modal-header-title',
-          options?.classNames?.title
-        )}
-      >
-        <h1
-          className={miniClsx(
-            'ww_modal-header-title-h1',
-            options?.classNames?.h1
-          )}
-        >
+      <div className={miniClsx('ww_modal-header-title', titleClassName)}>
+        <h1 className={miniClsx('ww_modal-header-title-h1', h1ClassName)}>
           {title}
         </h1>
       </div>
@@ -85,19 +115,16 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   );
 };
 
-type ModalBodyOptions = {
-  options?: {
-    classNames?: {
-      body?: string;
-    };
-  };
+type ModalBodyProps = PropsWithChildren & {
+  modalBodyClassName?: string;
 };
 
-type ModalBodyProps = ModalBodyOptions & PropsWithChildren;
-
-export const ModalBody: FC<ModalBodyProps> = ({ options, children }) => {
+export const ModalBody: FC<ModalBodyProps> = ({
+  modalBodyClassName,
+  children,
+}) => {
   return (
-    <div className={miniClsx('ww_modal-body', options?.classNames?.body)}>
+    <div className={miniClsx('ww_modal-body', modalBodyClassName)}>
       {children}
     </div>
   );
@@ -118,55 +145,40 @@ export const ModalContext = createContext<{
 });
 
 export const ModalContextProvider: FC<PropsWithChildren> = ({ children }) => {
-  // @todo: reducer.
-  const [openModals, setOpenModals] = useState<string[]>([]);
+  const [openModals, openModalsDispatch] = useReducer(modalReducer, []);
 
   const ctxValues = useMemo(() => {
     const pushToOpenModals = (modalId: string) => {
-      const current = [...openModals];
-      current.push(modalId);
-      setOpenModals(current);
+      openModalsDispatch({ type: 'add', item: modalId });
     };
     const removeFromOpenModals = (modalId: string) => {
-      const current = openModals.filter((id) => id !== modalId);
-      setOpenModals(current);
+      openModalsDispatch({ type: 'remove', itemToRemove: modalId });
     };
     return {
       openModals,
       pushToOpenModals,
       removeFromOpenModals,
     };
-  }, [openModals, setOpenModals]);
+  }, [openModals]);
 
   return (
     <ModalContext.Provider value={ctxValues}>{children}</ModalContext.Provider>
   );
 };
 
-const miniClsx = (...classNames: Array<string | undefined | false>): string => {
-  return classNames.filter((f) => !!f).join(' ');
-};
-
-type ModalConfig = {
+export type ModalConfig = {
+  blocking?: boolean;
+  contentClassName?: string;
+  dialogClassName?: string;
+  dialogStyles?: CSSProperties;
   isOpen: boolean;
+  modalClassName?: string;
   onClose: () => void;
-  options?: {
-    // Disable all the ways to close except for "X" button. Default: false.
-    blocking?: boolean;
-    classNames?: {
-      content?: string;
-      dialog?: string;
-      modal?: string;
-    };
-    inlineStyles?: {
-      dialogStyles?: CSSProperties;
-    };
-    // Removes all  (except the topmost modal one) - use with classNames: {...} to fully customise your look. Default: false.
-    unstyled?: boolean;
-  };
+  // Removes all  (except the topmost modal one) - use with classNames: {...} to fully customise your look. Default: false.
+  unstyled?: boolean;
 };
 
-type ModalProps = PropsWithChildren & ModalConfig;
+export type ModalProps = PropsWithChildren & ModalConfig;
 
 // Just a very simple modal implementation.
 // No frills, no animation, not very modular.
@@ -181,8 +193,13 @@ export const Modal: FC<ModalProps> = ({ isOpen, ...props }) => {
 };
 
 const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
-  options,
   onClose,
+  contentClassName,
+  modalClassName,
+  dialogClassName,
+  blocking,
+  unstyled,
+  dialogStyles,
   children,
 }) => {
   const documentRef = useRef<Document | null>(null);
@@ -227,7 +244,7 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
   // @todo: should only attempt to close current modal and leave the others.
   useEffect(() => {
     // Just don't run if a blocking modal.
-    if (options?.blocking) {
+    if (blocking) {
       return;
     }
 
@@ -246,7 +263,7 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
     return () => {
       documentRef.current?.body.removeEventListener('keydown', handleEsc);
     };
-  }, [options?.blocking]);
+  }, [blocking]);
 
   // @todo: Make custom styles and allow their overriding.
   // @todo: document style customisation.
@@ -254,27 +271,24 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
   return createPortal(
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
-      className={miniClsx('ww_modal', options?.classNames?.modal)}
-      data-blocking={!!options?.blocking}
+      className={miniClsx('ww_modal', modalClassName)}
+      data-blocking={!!blocking}
       data-id={id}
       onClick={() => {
-        if (!options?.blocking) {
+        if (!blocking) {
           onClose();
         }
       }}
     >
       <div
-        style={options?.inlineStyles?.dialogStyles}
-        className={miniClsx(
-          !options?.unstyled && 'ww_modal-dialog',
-          options?.classNames?.dialog
-        )}
+        style={dialogStyles}
+        className={miniClsx(!unstyled && 'ww_modal-dialog', dialogClassName)}
       >
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
         <div
           className={miniClsx(
-            !options?.unstyled && 'ww_modal-content',
-            options?.classNames?.content
+            !unstyled && 'ww_modal-content',
+            contentClassName
           )}
           onClick={(ev) => ev.stopPropagation()}
         >
