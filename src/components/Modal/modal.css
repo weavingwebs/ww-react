@@ -32,16 +32,18 @@
   max-width: var(--ww-modal-width);
   margin: var(--ww-modal-dialog-margin);
   width: auto;
+}
 
-  /* Note: ww-modal-width + ww-modal-dialog-margin * 2 */
-  @media (min-width: 670px) {
+.ww_modal-dialog::before {
+  display: block;
+  height: calc(100vh - (var(--ww-modal-dialog-margin) * 2));
+  content: '';
+}
+
+/* Note: ww-modal-width + ww-modal-dialog-margin * 2 */
+@media (min-width: 670px) {
+  .ww_modal-dialog {
     margin: var(--ww-modal-dialog-margin) auto;
-  }
-
-  .ww_modal-dialog::before {
-    display: block;
-    height: calc(100vh - (var(--ww-modal-dialog-margin) * 2));
-    content: '';
   }
 }
 
@@ -70,24 +72,25 @@
   outline: 0 !important;
   appearance: none !important;
   box-shadow: none !important;
+}
 
-  .ww_modal-header-close:focus,
-  .ww_modal-header-close:hover,
-  .ww_modal-header-close:focus-visible {
-    background-color: transparent !important;
-    box-shadow: none !important;
-  }
+.ww_modal-header-close:focus,
+.ww_modal-header-close:hover,
+.ww_modal-header-close:focus-visible {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
 
-  svg {
-    height: 2rem !important;
-    width: 2rem !important;
-    fill: var(--ww-modal-header-color) !important;
-  }
-  svg:focus,
-  svg:hover,
-  svg:focus-visible {
-    fill: #ff3c4b !important;
-  }
+.ww_modal-header-close svg {
+  height: 2rem !important;
+  width: 2rem !important;
+  fill: var(--ww-modal-header-color) !important;
+}
+
+.ww_modal-header-close svg:focus,
+.ww_modal-header-close svg:hover,
+.ww_modal-header-close svg:focus-visible {
+  fill: #ff3c4b !important;
 }
 
 .ww_modal-header-title-h1 {
