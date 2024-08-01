@@ -38,7 +38,7 @@
     margin: var(--ww-modal-dialog-margin) auto;
   }
 
-  &::before {
+  .ww_modal-dialog::before {
     display: block;
     height: calc(100vh - (var(--ww-modal-dialog-margin) * 2));
     content: '';
@@ -71,9 +71,9 @@
   appearance: none !important;
   box-shadow: none !important;
 
-  &:focus,
-  &:hover,
-  &:focus-visible {
+  .ww_modal-header-close:focus,
+  .ww_modal-header-close:hover,
+  .ww_modal-header-close:focus-visible {
     background-color: transparent !important;
     box-shadow: none !important;
   }
@@ -82,12 +82,11 @@
     height: 2rem !important;
     width: 2rem !important;
     fill: var(--ww-modal-header-color) !important;
-
-    &:focus,
-    &:hover,
-    &:focus-visible {
-      fill: #ff3c4b !important;
-    }
+  }
+  svg:focus,
+  svg:hover,
+  svg:focus-visible {
+    fill: #ff3c4b !important;
   }
 }
 
