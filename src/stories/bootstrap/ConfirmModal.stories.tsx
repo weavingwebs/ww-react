@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Meta } from '@storybook/react';
 import { Button } from '../../bootstrap/Button';
 import { useConfirmModal } from '../../hooks/useConfirmModal';
-import { ConfirmModal } from '../../components';
+import { BsConfirmModal } from '../../bootstrap';
 
 export const ConfirmModalExample: FC = () => {
   const confirmModalState = useConfirmModal();
@@ -69,7 +69,7 @@ export const ConfirmModalExample: FC = () => {
         </Button>
       </div>
 
-      <ConfirmModal {...confirmModalState} />
+      <BsConfirmModal {...confirmModalState} />
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react';
 import BootstrapModal from 'react-bootstrap/cjs/Modal.js';
-import { Button, ErrorMessage, Loading } from '../../bootstrap';
+import { Button, ErrorMessage, Loading } from '../index';
 import { useAsync, useConfirmModal } from '../../hooks';
 
-type ConfirmModalProps = ReturnType<typeof useConfirmModal>;
+type BsConfirmModalProps = ReturnType<typeof useConfirmModal>;
 
-export const ConfirmModal: FC<ConfirmModalProps> = ({
+export const BsConfirmModal: FC<BsConfirmModalProps> = ({
   titleLine,
   confirmLine,
   confirmBtnLabel,
