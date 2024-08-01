@@ -42,24 +42,19 @@ export const ModalStory: FC = () => {
       <Modal
         isOpen={boostrapSmModal.isOpen}
         onClose={boostrapSmModal.onClose}
-        options={{
-          blocking: false,
-          unstyled: true,
-          classNames: {
-            modal: 'modal',
-            dialog: 'modal-dialog modal-sm modal-dialog-centered',
-            content: 'modal-content',
-          },
-        }}
+        unstyled
+        modalClassName="modal"
+        dialogClassName="modal-dialog modal-sm modal-dialog-centered"
+        contentClassName="modal-content"
       >
         <ModalHeader
           onClose={boostrapSmModal.onClose}
           title="Bootstrap SM Modal"
-          options={{ classNames: { header: 'modal-header' } }}
+          headerClassName="modal-header"
         >
           Modal header extra content
         </ModalHeader>
-        <ModalBody options={{ classNames: { body: 'modal-body' } }}>
+        <ModalBody modalBodyClassName="modal-body">
           <div>
             <button type="button" onClick={boostrapMdModal.onOpen}>
               Open boostrap modal MD (default)
@@ -71,24 +66,19 @@ export const ModalStory: FC = () => {
       <Modal
         isOpen={boostrapMdModal.isOpen}
         onClose={boostrapMdModal.onClose}
-        options={{
-          blocking: false,
-          unstyled: true,
-          classNames: {
-            modal: 'modal',
-            dialog: 'modal-dialog modal-dialog-centered',
-            content: 'modal-content',
-          },
-        }}
+        unstyled
+        modalClassName="modal"
+        dialogClassName="modal-dialog modal-dialog-centered"
+        contentClassName="modal-content"
       >
         <ModalHeader
           onClose={boostrapMdModal.onClose}
           title="Bootstrap MD Modal"
-          options={{ classNames: { header: 'modal-header' } }}
+          headerClassName="modal-header"
         >
           Modal header extra content
         </ModalHeader>
-        <ModalBody options={{ classNames: { body: 'modal-body' } }}>
+        <ModalBody modalBodyClassName="modal-body">
           <div>
             <button type="button" onClick={boostrapLgModal.onOpen}>
               Open boostrap modal LG
@@ -101,24 +91,19 @@ export const ModalStory: FC = () => {
       <Modal
         isOpen={boostrapLgModal.isOpen}
         onClose={boostrapLgModal.onClose}
-        options={{
-          blocking: false,
-          unstyled: true,
-          classNames: {
-            modal: 'modal',
-            dialog: 'modal-dialog modal-lg modal-dialog-centered',
-            content: 'modal-content',
-          },
-        }}
+        unstyled
+        modalClassName="modal"
+        dialogClassName="modal-dialog modal-lg modal-dialog-centered"
+        contentClassName="modal-content"
       >
         <ModalHeader
           onClose={boostrapLgModal.onClose}
           title="Bootstrap LG Modal"
-          options={{ classNames: { header: 'modal-header' } }}
+          headerClassName="modal-header"
         >
           Modal header extra content
         </ModalHeader>
-        <ModalBody options={{ classNames: { body: 'modal-body' } }}>
+        <ModalBody modalBodyClassName="modal-body">
           <div>
             <button type="button" onClick={boostrapXlModal.onOpen}>
               Open boostrap modal XL
@@ -131,24 +116,19 @@ export const ModalStory: FC = () => {
       <Modal
         isOpen={boostrapXlModal.isOpen}
         onClose={boostrapXlModal.onClose}
-        options={{
-          blocking: false,
-          unstyled: true,
-          classNames: {
-            modal: 'modal',
-            dialog: 'modal-dialog modal-xl modal-dialog-centered',
-            content: 'modal-content',
-          },
-        }}
+        unstyled
+        modalClassName="modal"
+        dialogClassName="modal-dialog modal-xl modal-dialog-centered"
+        contentClassName="modal-content"
       >
         <ModalHeader
           onClose={boostrapXlModal.onClose}
           title="Bootstrap XL Modal"
-          options={{ classNames: { header: 'modal-header' } }}
+          headerClassName="modal-header"
         >
           Modal header extra content
         </ModalHeader>
-        <ModalBody options={{ classNames: { body: 'modal-body' } }}>
+        <ModalBody modalBodyClassName="modal-body">
           <div>No further sizes to open</div>
         </ModalBody>
       </Modal>
@@ -157,24 +137,19 @@ export const ModalStory: FC = () => {
       <Modal
         isOpen={boostrapFullscreenModal.isOpen}
         onClose={boostrapFullscreenModal.onClose}
-        options={{
-          blocking: false,
-          unstyled: true,
-          classNames: {
-            modal: 'modal',
-            dialog: 'modal-dialog modal-fullscreen modal-dialog-centered',
-            content: 'modal-content',
-          },
-        }}
+        unstyled
+        modalClassName="modal"
+        dialogClassName="modal-dialog modal-fullscreen modal-dialog-centered"
+        contentClassName="modal-content"
       >
         <ModalHeader
           onClose={boostrapFullscreenModal.onClose}
           title="Bootstrap Fullscreen Modal"
-          options={{ classNames: { header: 'modal-header' } }}
+          headerClassName="modal-header"
         >
           Modal header extra content
         </ModalHeader>
-        <ModalBody options={{ classNames: { body: 'modal-body' } }}>
+        <ModalBody modalBodyClassName="modal-body">
           <div>
             <button type="button" onClick={boostrapMdModal.onOpen}>
               Open boostrap modal MD (default)
@@ -183,13 +158,7 @@ export const ModalStory: FC = () => {
         </ModalBody>
       </Modal>
 
-      <Modal
-        isOpen={defaultModal.isOpen}
-        onClose={defaultModal.onClose}
-        options={{
-          blocking: false,
-        }}
-      >
+      <Modal isOpen={defaultModal.isOpen} onClose={defaultModal.onClose}>
         <ModalHeader onClose={defaultModal.onClose} title="Default modal" />
         <ModalBody>Modal body...</ModalBody>
       </Modal>
