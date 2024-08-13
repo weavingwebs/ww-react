@@ -3,7 +3,7 @@ export * from './Loading';
 export * from './FormLabel';
 export * from './FormError';
 export * from './FormText';
-export * from './Pagination';
+export * from './BsPagination';
 export * from './Button';
 export * from './TableResultsWithPlaceholder';
 export * from './Table';

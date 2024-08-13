@@ -8,7 +8,7 @@ import { useUrlFiltersWithPage } from '@weavingwebs/ww-react-next';
 import {
   BsFormLabel,
   FullPageLoading,
-  Pagination,
+  BsPagination,
   TableResultsWithPlaceholder,
 } from '../../bootstrap';
 import { getData, MockDataQueryResult } from '../mocks';
@@ -208,7 +208,7 @@ export const FullExampleWithPaging: FC<UrlParamsFilteredTableProps> = ({
         </table>
       </div>
 
-      <Pagination
+      <BsPagination
         totalItems={data?.total || 0}
         currentPage={liveFilters.page}
         itemsPerPage={itemsPerPage}
