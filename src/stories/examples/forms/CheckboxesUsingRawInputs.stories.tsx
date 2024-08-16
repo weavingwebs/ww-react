@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { array, object, string } from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, FormError } from '../../../bootstrap';
+import { BsButton, FormError } from '../../../bootstrap';
 
 const validationSchema = object({
   checkbox: array(string()).label('Checkbox').required().min(1),
@@ -87,9 +87,9 @@ export const CheckboxesUsingRawInputs: StoryObj = () => {
           )}
         </div>
 
-        <Button variant="primary" type="submit" disabled={isSubmitting}>
+        <BsButton variant="primary" type="submit" disabled={isSubmitting}>
           Submit
-        </Button>
+        </BsButton>
       </form>
     </FormProvider>
   );

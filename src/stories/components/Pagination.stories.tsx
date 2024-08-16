@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { usePager } from '../../hooks';
 import { Pagination } from '../../components';
 
-export const PaginationExample: FC = () => {
+export const Example: FC = () => {
   const { itemsPerPage, currentPage, total, dispatch } = usePager(10, 101);
 
   return (
@@ -22,5 +22,5 @@ export const PaginationExample: FC = () => {
 
 export default {
   title: 'Components/Pagination',
-  component: PaginationExample,
-} as Meta<typeof PaginationExample>;
+  component: Example,
+} as Meta<typeof Example>;

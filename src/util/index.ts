@@ -22,3 +22,15 @@ export const booleanishToBoolean = (booleanish: Booleanish): boolean =>
   booleanish === 'true';
 
 export const isAbsoluteUrl = (url: string) => /^(https?:)?\/\//m.test(url);
+
+export function unwrapErrorToString(err: Error) {
+  let errStr = err.message;
+  if (err.cause instanceof Error) {
+    errStr += `: ${unwrapErrorToString(err.cause)}`;
+  }
+  return errStr;
+}
+
+export const noop = () => {
+  throw new Error('noop');
+};

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { TableResultsWithPlaceholder } from '../../bootstrap/TableResultsWithPlaceholder';
+import { BsTableResultsWithPlaceholder } from '../../bootstrap/BsTableResultsWithPlaceholder';
 import mockData from '../mocks/mockData.json';
 
 export const Example: FC<{
@@ -22,7 +22,7 @@ export const Example: FC<{
         </tr>
       </thead>
       <tbody>
-        <TableResultsWithPlaceholder
+        <BsTableResultsWithPlaceholder
           columnCount={6}
           error={showError ? new Error('Mock error') : null}
           errorPrefix="Failed to get results"
@@ -46,7 +46,7 @@ export const Example: FC<{
 };
 
 const meta: Meta = {
-  title: 'Bootstrap/TableResultsWithPlaceholder',
+  title: 'Bootstrap/BsTableResultsWithPlaceholder',
   component: Example,
   args: {
     isLoading: false,

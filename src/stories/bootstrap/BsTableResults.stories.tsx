@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import mockData from '../mocks/mockData.json';
 import { TableResults } from '../../components/TableResults';
+import { BsErrorMessage, BsFullPageLoading } from '../../bootstrap';
 
 export const Example: FC<{
   isLoading: boolean;
@@ -23,6 +24,8 @@ export const Example: FC<{
       </thead>
       <tbody>
         <TableResults
+          ErrorComponent={BsErrorMessage}
+          FullPageLoadingComponent={BsFullPageLoading}
           columnCount={6}
           error={showError ? new Error('Mock error') : null}
           errorPrefix="Failed to get results"
@@ -45,7 +48,7 @@ export const Example: FC<{
 };
 
 const meta: Meta = {
-  title: 'Components/TableResults',
+  title: 'Bootstrap/BsTableResults',
   component: Example,
   args: {
     isLoading: false,

@@ -1,26 +1,17 @@
 import clsx from 'clsx';
 import { FC, PropsWithChildren } from 'react';
 import { FaExclamationTriangle } from 'react-icons/fa';
+import { unwrapErrorToString } from '../../util';
 
-function unwrapErrorToString(err: Error) {
-  let errStr = err.message;
-  if (err.cause instanceof Error) {
-    errStr += `: ${unwrapErrorToString(err.cause)}`;
-  }
-  return errStr;
-}
-
-type ErrorMessageProps = PropsWithChildren & {
+export type BsErrorMessageProps = PropsWithChildren & {
   className?: string;
   error: Error | null;
   prefix?: string;
   reloadButton?: boolean;
 };
 
-// NOTE: Returns null if !error, so don't need to use it like this: { error && <ErrorMessage prefix="" error={error} /> },
-// instead just do <ErrorMessage error={error} />.
-// Keeps the render function a bit cleaner.
-export const ErrorMessage: FC<ErrorMessageProps> = ({
+/* NOTE: This component no longer includes bootstrap styles. Use BsErrorMessage or provide own styles. */
+export const BsErrorMessage: FC<BsErrorMessageProps> = ({
   error,
   className,
   prefix,
@@ -35,7 +26,6 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({
   if (prefix) {
     errorMessage = `${prefix}: ${errorMessage}`;
   }
-
   return (
     <div className={clsx('alert alert-danger', className)}>
       <FaExclamationTriangle className="me-2" />

@@ -1,0 +1,22 @@
+import { SimpleModals } from './SimpleModals.stories';
+import { Meta, Source, Story, Title } from '@storybook/blocks';
+import { ConfirmModals } from './ConfirmModals.stories';
+
+<Meta title="Examples/Modals" />
+<Title>Modals</Title>
+IMPORTANT: Do NOT use `react-bootstrap/Modal` for any new projects. A race
+condition causes us to lose scrollbar under certain circumstances.
+
+We now use <b>our own implementation everywhere</b>: `import { Modal } from @weavingwebs/ww-react`.
+
+<br />
+
+### 1. Simple modals
+
+<Story of={SimpleModals} />
+<Source of={SimpleModals} dark />
+
+### 2. Confirm modals
+
+<Story of={ConfirmModals} />
+<Source of={ConfirmModals} dark />

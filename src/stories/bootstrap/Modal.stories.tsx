@@ -1,16 +1,18 @@
 import BootstrapModal from 'react-bootstrap/cjs/Modal.js';
 import { FC } from 'react';
 import { Meta } from '@storybook/react';
-import { Button } from '../../bootstrap/Button';
+import { BsButton } from '../../bootstrap/BsButton';
 import { useModal } from '../../hooks/useModal';
+
+// @todo: delete
 
 export const Modal: FC = () => {
   const { isOpen, onClose, onOpen } = useModal();
   return (
     <div>
-      <Button variant="primary" onClick={onOpen}>
+      <BsButton variant="primary" onClick={onOpen}>
         Open modal
-      </Button>
+      </BsButton>
       <BootstrapModal show={isOpen} onHide={onClose} centered animation={false}>
         <BootstrapModal.Header closeButton>
           <BootstrapModal.Title>Title</BootstrapModal.Title>
@@ -18,9 +20,9 @@ export const Modal: FC = () => {
         <BootstrapModal.Body>
           Lorem ipsum dolor sit amet.
           <div className="d-flex justify-content-end">
-            <Button variant="danger" outlined onClick={onClose}>
+            <BsButton variant="danger" outlined onClick={onClose}>
               Close
-            </Button>
+            </BsButton>
           </div>
         </BootstrapModal.Body>
       </BootstrapModal>

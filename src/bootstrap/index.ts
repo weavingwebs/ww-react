@@ -1,20 +1,21 @@
-export * from './ErrorMessage';
-export * from './Loading';
-export * from './FormLabel';
-export * from './FormError';
-export * from './FormText';
-export * from './BsPagination';
-export * from './Button';
-export * from './TableResultsWithPlaceholder';
-export * from './Table';
-export * from './TableHeaderCell';
+// Types
+export * from './types';
+
+// Utils
 export * from './util';
+
+// Components
+export * from './BsErrorMessage';
+export * from './BsLoading';
+export * from './BsPagination';
+export * from './BsButton';
+export * from './BsTableResultsWithPlaceholder';
+export * from './BsTable';
 export * from './BsFormCheckbox';
 export * from './BsFormDate';
 export * from './BsFormError';
 export * from './BsFormLabel';
 export * from './BsFormInput';
 export * from './BsFormText';
-export * from './ErrorModal';
-export { BootstrapColourVariants } from './colourVariants';
 export * from './BsConfirmModal';
+export * from './BsErrorModal';

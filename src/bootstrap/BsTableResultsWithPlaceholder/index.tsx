@@ -1,14 +1,14 @@
 import { makeArrayFromRange } from '../../util';
-import { TableResults, TableResultsProps } from '../../components/TableResults';
+import { BsTableResults, BsTableResultsProps } from '../BsTableResults';
 
-export type TableResultsWithPlaceholderProps<T> = TableResultsProps<T> & {
+export type BsTableResultsWithPlaceholderProps<T> = BsTableResultsProps<T> & {
   placeholderRowCount: number;
 };
 
-export const TableResultsWithPlaceholder = <T extends {}>({
+export const BsTableResultsWithPlaceholder = <T extends {}>({
   placeholderRowCount,
   ...props
-}: TableResultsWithPlaceholderProps<T>) => {
+}: BsTableResultsWithPlaceholderProps<T>) => {
   if (props.isLoading) {
     return (
       <>
@@ -25,5 +25,5 @@ export const TableResultsWithPlaceholder = <T extends {}>({
     );
   }
 
-  return <TableResults {...props} />;
+  return <BsTableResults {...props} />;
 };

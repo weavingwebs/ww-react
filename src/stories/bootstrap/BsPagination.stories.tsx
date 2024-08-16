@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { usePager } from '../../hooks';
 import { BsPagination } from '../../bootstrap';
 
-export const BsPaginationExample: FC = () => {
+export const Example: FC = () => {
   const { itemsPerPage, currentPage, total, dispatch } = usePager(10, 101);
 
   return (
@@ -22,5 +22,5 @@ export const BsPaginationExample: FC = () => {
 
 export default {
   title: 'Bootstrap/BsPagination',
-  component: BsPaginationExample,
-} as Meta<typeof BsPaginationExample>;
+  component: Example,
+} as Meta<typeof Example>;

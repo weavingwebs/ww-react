@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { object, string } from 'yup';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, BsFormError, BsFormLabel } from '../../bootstrap';
+import { BsButton, BsFormError, BsFormLabel } from '../../bootstrap';
 import { SearchableSelect } from '../../components';
 import { getData } from '../mocks';
 
@@ -72,9 +72,9 @@ export const SearchableSelectServersideInForm: FC<
           )}
         </div>
 
-        <Button variant="primary" type="submit" disabled={isSubmitting}>
+        <BsButton variant="primary" type="submit" disabled={isSubmitting}>
           Submit
-        </Button>
+        </BsButton>
       </form>
     </FormProvider>
   );

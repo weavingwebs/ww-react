@@ -1,15 +1,15 @@
 import Modal from 'react-bootstrap/cjs/Modal.js';
 import { FC, PropsWithChildren } from 'react';
-import { ErrorMessage } from '../ErrorMessage';
-import { Button } from '../Button';
+import { BsButton } from '../BsButton';
+import { BsErrorMessage } from '../BsErrorMessage';
 
-type ErrorModalProps = PropsWithChildren & {
+type BsErrorModalProps = PropsWithChildren & {
   error: Error | null;
   onClose: () => void;
   title?: string;
 };
 
-export const ErrorModal: FC<ErrorModalProps> = ({
+export const BsErrorModal: FC<BsErrorModalProps> = ({
   error,
   onClose,
   title,
@@ -28,13 +28,13 @@ export const ErrorModal: FC<ErrorModalProps> = ({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ErrorMessage error={error} className="mb-0" />
+        <BsErrorMessage error={error} className="mb-0" />
         {children}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="danger" outlined onClick={onClose}>
+        <BsButton variant="danger" outlined onClick={onClose}>
           Close
-        </Button>
+        </BsButton>
       </Modal.Footer>
     </Modal>
   );

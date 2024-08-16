@@ -7,9 +7,9 @@ import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider/next
 import { useUrlFiltersWithPage } from '@weavingwebs/ww-react-next';
 import {
   BsFormLabel,
-  FullPageLoading,
+  BsFullPageLoading,
   BsPagination,
-  TableResultsWithPlaceholder,
+  BsTableResultsWithPlaceholder,
 } from '../../bootstrap';
 import { getData, MockDataQueryResult } from '../mocks';
 
@@ -112,7 +112,7 @@ export const FullExampleWithPaging: FC<UrlParamsFilteredTableProps> = ({
   }, [filtersReady, liveFilters, paging, throwError]);
 
   if (!isReady || !filtersReady) {
-    return <FullPageLoading />;
+    return <BsFullPageLoading />;
   }
   return (
     <div>
@@ -183,7 +183,7 @@ export const FullExampleWithPaging: FC<UrlParamsFilteredTableProps> = ({
             </tr>
           </thead>
           <tbody>
-            <TableResultsWithPlaceholder
+            <BsTableResultsWithPlaceholder
               columnCount={7}
               error={error}
               errorPrefix="Failed to get results"

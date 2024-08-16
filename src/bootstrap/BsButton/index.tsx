@@ -1,8 +1,8 @@
-import * as React from 'react';
 import clsx from 'clsx';
-import { BootstrapColourVariants } from '../colourVariants';
+import { ButtonHTMLAttributes, ComponentType, FC } from 'react';
+import { BootstrapColourVariants } from '../types';
 
-export type BootstrapButtonProps = {
+export type BsButtonBaseProps = {
   className?: string;
   disabled?: boolean;
   fullWidth?: boolean;
@@ -13,10 +13,10 @@ export type BootstrapButtonProps = {
   variant: BootstrapColourVariants | 'link';
 };
 
-export function withButtonClasses<P = object>(
-  Component: React.ComponentType<P>
-): React.FC<P & BootstrapButtonProps> {
-  const wrappedWithButtonClasses: React.FC<P & BootstrapButtonProps> = ({
+export function withBsButtonClasses<P = object>(
+  Component: ComponentType<P>
+): FC<P & BsButtonBaseProps> {
+  const wrappedWithButtonClasses: FC<P & BsButtonBaseProps> = ({
     className,
     variant,
     size,
@@ -39,16 +39,16 @@ export function withButtonClasses<P = object>(
       {...(props as unknown as P)}
     />
   );
-  wrappedWithButtonClasses.displayName = `withButtonClasses(${
+  wrappedWithButtonClasses.displayName = `withBsButtonClasses(${
     Component.displayName || Component.name
   })`;
   return wrappedWithButtonClasses;
 }
 
-export type ButtonProps = BootstrapButtonProps &
-  React.ButtonHTMLAttributes<HTMLButtonElement> & { type?: 'submit' };
+export type BsButtonProps = BsButtonBaseProps &
+  ButtonHTMLAttributes<HTMLButtonElement> & { type?: 'submit' };
 
-export const Button: React.FC<ButtonProps> = withButtonClasses(
+export const BsButton: FC<BsButtonProps> = withBsButtonClasses(
   ({ type, ...props }) => (
     <button type={type === 'submit' ? 'submit' : 'button'} {...props} />
   )

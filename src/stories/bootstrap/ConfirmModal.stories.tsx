@@ -1,16 +1,17 @@
 import { FC } from 'react';
 import { Meta } from '@storybook/react';
-import { Button } from '../../bootstrap/Button';
+import { BsButton } from '../../bootstrap/BsButton';
 import { useConfirmModal } from '../../hooks/useConfirmModal';
 import { BsConfirmModal } from '../../bootstrap';
+import { ModalContextProvider } from '../../components';
 
-export const ConfirmModalExample: FC = () => {
+export const BsConfirmModalExample: FC = () => {
   const confirmModalState = useConfirmModal();
 
   return (
     <div>
       <div className="mb-3">
-        <Button
+        <BsButton
           variant="primary"
           onClick={() =>
             confirmModalState.showConfirm({
@@ -27,10 +28,10 @@ export const ConfirmModalExample: FC = () => {
           }
         >
           Open modal (successful confirm)
-        </Button>
+        </BsButton>
       </div>
       <div className="mb-3">
-        <Button
+        <BsButton
           variant="primary"
           onClick={() =>
             confirmModalState.showConfirm({
@@ -45,10 +46,10 @@ export const ConfirmModalExample: FC = () => {
           }
         >
           Open modal (failed confirm)
-        </Button>
+        </BsButton>
       </div>
       <div>
-        <Button
+        <BsButton
           variant="primary"
           onClick={() =>
             confirmModalState.showConfirm({
@@ -66,17 +67,19 @@ export const ConfirmModalExample: FC = () => {
           }
         >
           {`Open modal (successful confirm & don't auto-close on success)`}
-        </Button>
+        </BsButton>
       </div>
 
-      <BsConfirmModal {...confirmModalState} />
+      <ModalContextProvider>
+        <BsConfirmModal {...confirmModalState} />
+      </ModalContextProvider>
     </div>
   );
 };
 
 const meta: Meta = {
-  title: 'Bootstrap/Modal',
-  component: ConfirmModalExample,
+  title: 'Bootstrap/BsConfirmModal',
+  component: BsConfirmModalExample,
 };
 
 export default meta;

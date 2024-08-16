@@ -9,9 +9,7 @@ import { CSSProperties, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { format, isDate } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
-import { FormLabel } from '../../bootstrap';
-import { FormError } from '../../bootstrap/FormError';
-import { FormText } from '../../bootstrap/FormText';
+import { BsFormError, BsFormLabel, BsFormText } from '../../bootstrap';
 
 type HookFormDateInputType = 'date' | 'datetime-local';
 
@@ -37,7 +35,7 @@ type FormInputProps<T extends FieldValues> = {
 /** @deprecated use BsFormDate.
  This relies on using storing date as Date | null in the form values.
  NOTE: If type is not set, it defaults to 'date'.
-*/
+ */
 export function HookFormDateInput<T extends FieldValues>({
   name,
   control: _control,
@@ -95,13 +93,13 @@ export function HookFormDateInput<T extends FieldValues>({
   return (
     <div className={clsx(className, 'has-validation')} aria-live="polite">
       {label && (
-        <FormLabel
+        <BsFormLabel
           htmlFor={name}
           required={required}
           className={clsx(labelClassName)}
         >
           {label}
-        </FormLabel>
+        </BsFormLabel>
       )}
       <div className={clsx({ 'input-group': inputPrependText })}>
         {inputPrependText && (
@@ -120,8 +118,8 @@ export function HookFormDateInput<T extends FieldValues>({
           required={required}
         />
       </div>
-      {helpText && <FormText ariaDescribedBy={name}>{helpText}</FormText>}
-      {error && <FormError id={`${name}Error`}>{error.message}</FormError>}
+      {helpText && <BsFormText ariaDescribedBy={name}>{helpText}</BsFormText>}
+      {error && <BsFormError id={`${name}Error`} error={error} />}
     </div>
   );
 }

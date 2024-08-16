@@ -14,20 +14,20 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { format, isValid, parse } from 'date-fns';
 import { formatInTimeZone, toDate } from 'date-fns-tz';
 import { PreventDirtyFormNavigate } from '@weavingwebs/ww-react-next';
-import { Button } from '../../bootstrap/Button';
+import { BsButton } from '../../../bootstrap/BsButton';
 import {
   CustomerFragment,
   CustomerInput,
   Gender,
   GenderLabels,
-} from '../mocks';
-import { ErrorMessage, Loading } from '../../bootstrap';
+} from '../../mocks';
+import { BsErrorMessage, BsLoading } from '../../../bootstrap';
 // @todo import from ww-react-next
-import { transformEmptyToNull } from '../../util/forms';
-import { useMemoOnce } from '../../hooks/useMemoOnce';
-import { BsFormInput } from '../../bootstrap/BsFormInput';
-import { BsFormDate } from '../../bootstrap/BsFormDate';
-import { BsFormCheckbox } from '../../bootstrap/BsFormCheckbox';
+import { transformEmptyToNull } from '../../../util/forms';
+import { useMemoOnce } from '../../../hooks/useMemoOnce';
+import { BsFormInput } from '../../../bootstrap/BsFormInput';
+import { BsFormDate } from '../../../bootstrap/BsFormDate';
+import { BsFormCheckbox } from '../../../bootstrap/BsFormCheckbox';
 
 // Define the shape of the form values, overriding any props as needed for compatibility with HTML inputs.
 type FormValues = Omit<
@@ -231,7 +231,7 @@ export const CreateUpdateForm: FC<CreateUpdateFormProps> = ({
         })}
       >
         <PreventDirtyFormNavigate />
-        <ErrorMessage error={loadError} />
+        <BsErrorMessage error={loadError} />
 
         <BsFormInput<FormValues>
           required
@@ -311,18 +311,18 @@ export const CreateUpdateForm: FC<CreateUpdateFormProps> = ({
           className="mb-3"
         />
 
-        <ErrorMessage error={submitError} />
+        <BsErrorMessage error={submitError} />
 
-        <Button variant="primary" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? <Loading colour="light" size="sm" /> : 'Submit'}
-        </Button>
+        <BsButton variant="primary" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? <BsLoading colour="light" size="sm" /> : 'Submit'}
+        </BsButton>
       </form>
     </FormProvider>
   );
 };
 
 export default {
-  title: 'Components/CreateUpdateForm',
+  title: 'Examples/Forms/CreateUpdateForm',
   component: CreateUpdateForm,
   args: {
     onSubmit: (input) => {

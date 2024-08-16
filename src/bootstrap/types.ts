@@ -1,4 +1,3 @@
-// @todo: type is repeated.
 export type BootstrapColourVariants =
   | 'primary'
   | 'secondary'

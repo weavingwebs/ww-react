@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { object, string } from 'yup';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, BsFormError, BsFormLabel } from '../../../bootstrap';
+import { BsButton, BsFormError, BsFormLabel } from '../../../bootstrap';
 
 const validationSchema = object({
   radio: string().label('Radio').required().min(1),
@@ -87,14 +87,14 @@ export const RadiosUsingRawInputs: StoryObj = () => {
           )}
         </div>
 
-        <Button
+        <BsButton
           variant="primary"
           type="submit"
           disabled={isSubmitting}
           className="mt-3"
         >
           Submit
-        </Button>
+        </BsButton>
       </form>
     </FormProvider>
   );
