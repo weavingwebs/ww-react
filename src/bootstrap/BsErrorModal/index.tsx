@@ -6,13 +6,16 @@ import { BsErrorMessage } from '../BsErrorMessage';
 type BsErrorModalProps = PropsWithChildren & {
   error: Error | null;
   onClose: () => void;
+  prefix?: string;
   title?: string;
 };
 
+// @todo: Use our <Modal/> and make a story.
 export const BsErrorModal: FC<BsErrorModalProps> = ({
   error,
   onClose,
   title,
+  prefix,
   children,
 }) => {
   if (!error) {
@@ -28,7 +31,7 @@ export const BsErrorModal: FC<BsErrorModalProps> = ({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <BsErrorMessage error={error} className="mb-0" />
+        <BsErrorMessage error={error} className="mb-0" prefix={prefix} />
         {children}
       </Modal.Body>
       <Modal.Footer>

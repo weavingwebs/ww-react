@@ -14,6 +14,9 @@ import {
 import { createPortal } from 'react-dom';
 import './modal.css';
 
+// @todo: modal.scss must be exported as a file to be imported.
+// It must not be embedded in <style> as that makes bootstrap classes unable to override properties.
+
 const miniClsx = (...classNames: Array<string | undefined | false>): string => {
   return classNames.filter((f) => !!f).join(' ');
 };
