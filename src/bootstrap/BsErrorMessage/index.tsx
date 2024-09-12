@@ -10,7 +10,6 @@ export type BsErrorMessageProps = PropsWithChildren & {
   reloadButton?: boolean;
 };
 
-/* NOTE: This component no longer includes bootstrap styles. Use BsErrorMessage or provide own styles. */
 export const BsErrorMessage: FC<BsErrorMessageProps> = ({
   error,
   className,
