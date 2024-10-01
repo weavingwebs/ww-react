@@ -269,17 +269,20 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
   // @todo: document style customisation.
   // @todo: a11y
   return createPortal(
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
       className={miniClsx('ww_modal', modalClassName)}
       data-blocking={!!blocking}
       data-id={id}
-      onClick={() => {
-        if (!blocking) {
-          onClose();
-        }
-      }}
     >
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+      <div
+        className="ww_modal-close"
+        onClick={() => {
+          if (!blocking) {
+            onClose();
+          }
+        }}
+      />
       <div
         style={dialogStyles}
         className={miniClsx(!unstyled && 'ww_modal-dialog', dialogClassName)}

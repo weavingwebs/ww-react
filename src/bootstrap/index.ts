@@ -18,3 +18,4 @@ export * from './BsFormText';
 export * from './ErrorModal';
 export { BootstrapColourVariants } from './colourVariants';
 export * from './BsConfirmModal';
+export * from './BsInvalidFeedback';

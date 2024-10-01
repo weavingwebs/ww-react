@@ -24,6 +24,14 @@
   outline: 0;
 }
 
+.ww_modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
 .ww_modal-dialog {
   display: flex;
   align-items: center;
