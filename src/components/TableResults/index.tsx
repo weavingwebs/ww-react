@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { ErrorMessage, FullPageLoading } from '../../bootstrap';
 
+/** @deprecated: use WwTableResultsProps instead. */
 export type TableResultsProps<T> = {
   columnCount: number;
   error: Error | null;
@@ -10,7 +11,7 @@ export type TableResultsProps<T> = {
   results: T[] | null | undefined;
 };
 
-/** @deprecated: wrap <WwTableResults/> component and provide error/loading components instead. */
+/** @deprecated: use <WwTableResults/> component and provide error/loading components instead. */
 export function TableResults<T extends {}>({
   isLoading,
   error,

@@ -23,3 +23,4 @@ export * from './BsInvalidFeedback';
 export * from './BsWwTable';
 export * from './BsWwTableResults';
 export * from './BsWwTableResultsWithPlaceholder';
+export * from './BsWwPagination';

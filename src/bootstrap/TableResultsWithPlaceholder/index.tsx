@@ -1,10 +1,12 @@
 import { makeArrayFromRange } from '../../util';
 import { TableResults, TableResultsProps } from '../../components/TableResults';
 
+/** @deprecated: use BsWwTableResultsWithPlaceholderProps instead. */
 export type TableResultsWithPlaceholderProps<T> = TableResultsProps<T> & {
   placeholderRowCount: number;
 };
 
+/** @deprecated: use BsWwTableResultsWithPlaceholder instead. */
 export const TableResultsWithPlaceholder = <T extends {}>({
   placeholderRowCount,
   ...props

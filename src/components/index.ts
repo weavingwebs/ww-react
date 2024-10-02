@@ -10,3 +10,4 @@ export * from './TableHeaderCell';
 // New WW components
 export * from './WwTable';
 export * from './WwTableResults';
+export * from './WwPagination';

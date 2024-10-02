@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren, ReactNode } from 'react';
 import clsx from 'clsx';
 
+/** @deprecated: use BsWwTableProps instead. */
 export type TableProps = PropsWithChildren & {
   // Tip: Use <><HeaderCell>Column Name</HeaderCell>...</>
   columns: ReactNode;
@@ -14,7 +15,7 @@ export type TableProps = PropsWithChildren & {
 };
 
 // Warning: Do not use table striped class. It will not work with <TableRow/> disableHover prop.
-/** @deprecated: use BsWwTable (bootstrap) or WwTable (unstyled) instead. */
+/** @deprecated: use BsWwTable instead. */
 export const Table: FC<TableProps> = ({
   columns,
   rowHover,
