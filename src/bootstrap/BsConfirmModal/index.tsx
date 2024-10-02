@@ -5,6 +5,7 @@ import { useAsync, useConfirmModal } from '../../hooks';
 
 type BsConfirmModalProps = ReturnType<typeof useConfirmModal>;
 
+/** @deprecated: use BsWwConfirmModal instead */
 export const BsConfirmModal: FC<BsConfirmModalProps> = ({
   titleLine,
   confirmLine,

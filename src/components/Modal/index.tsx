@@ -166,6 +166,7 @@ export const ModalContextProvider: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
+/** @deprecated: use ModalBaseProps instead. */
 export type ModalConfig = {
   blocking?: boolean;
   contentClassName?: string;
@@ -178,7 +179,22 @@ export type ModalConfig = {
   unstyled?: boolean;
 };
 
-export type ModalProps = PropsWithChildren & ModalConfig;
+export type ModalStyleProps = {
+  contentClassName?: string;
+  dialogClassName?: string;
+  dialogStyles?: CSSProperties;
+  modalClassName?: string;
+  // Removes all  (except the topmost modal one) - use with classNames: {...} to fully customise your look. Default: false.
+  unstyled?: boolean;
+};
+
+export type ModalBaseProps = ModalStyleProps & {
+  blocking?: boolean;
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+export type ModalProps = PropsWithChildren & ModalBaseProps;
 
 // Just a very simple modal implementation.
 // No frills, no animation, not very modular.

@@ -11,3 +11,5 @@ export * from './TableHeaderCell';
 export * from './WwTable';
 export * from './WwTableResults';
 export * from './WwPagination';
+export * from './WwConfirmModal';
+export * from './WwErrorModal';
