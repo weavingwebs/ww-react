@@ -5,3 +5,8 @@ export * from './SearchableSelect';
 export * from './TableResults';
 export * from './types';
 export * from './Modal';
+export * from './TableHeaderCell';
+
+// New WW components
+export * from './WwTable';
+export * from './WwTableResults';

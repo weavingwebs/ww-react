@@ -1,29 +1,34 @@
-import { ReactNode } from 'react';
-import { ErrorMessage, FullPageLoading } from '../../bootstrap';
+import { ComponentType, ReactNode } from 'react';
 
-export type TableResultsProps<T> = {
+export type WwTableResultsBaseProps<T> = {
   columnCount: number;
   error: Error | null;
-  errorPrefix: string;
+  errorPrefix?: string /** @deprecated: wrap errors with cause */;
   isLoading: boolean;
   renderRow: (row: T) => ReactNode;
   results: T[] | null | undefined;
 };
 
-/** @deprecated: wrap <WwTableResults/> component and provide error/loading components instead. */
-export function TableResults<T extends {}>({
+export type WwTableResultsProps<T> = WwTableResultsBaseProps<T> & {
+  ErrorComponent: ComponentType<{ error: Error | null; prefix?: string }>;
+  FullPageLoadingComponent: ComponentType;
+};
+
+export function WwTableResults<T extends {}>({
   isLoading,
   error,
   errorPrefix,
   results,
   columnCount,
   renderRow,
-}: TableResultsProps<T>) {
+  ErrorComponent,
+  FullPageLoadingComponent,
+}: WwTableResultsProps<T>) {
   if (error) {
     return (
       <tr>
         <td colSpan={columnCount}>
-          <ErrorMessage error={error} prefix={errorPrefix} />
+          <ErrorComponent error={error} prefix={errorPrefix} />
         </td>
       </tr>
     );
@@ -33,7 +38,7 @@ export function TableResults<T extends {}>({
     return (
       <tr>
         <td colSpan={columnCount}>
-          <FullPageLoading />
+          <FullPageLoadingComponent />
         </td>
       </tr>
     );
