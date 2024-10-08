@@ -4,11 +4,15 @@ import { Button } from '../../bootstrap/Button';
 import { useConfirmModal } from '../../hooks/useConfirmModal';
 import { BsConfirmModal } from '../../bootstrap';
 
-export const ConfirmModalExample: FC = () => {
+export const BsConfirmModalExample: FC = () => {
   const confirmModalState = useConfirmModal();
 
   return (
     <div>
+      <h1>Deprecated</h1>
+      <p className="mb-3">
+        This component is now deprecated, use BsWwConfirmModal instead.{' '}
+      </p>
       <div className="mb-3">
         <Button
           variant="primary"
@@ -75,8 +79,8 @@ export const ConfirmModalExample: FC = () => {
 };
 
 const meta: Meta = {
-  title: 'Bootstrap/Modal',
-  component: ConfirmModalExample,
+  title: 'Bootstrap/BsConfirmModal (deprecated)',
+  component: BsConfirmModalExample,
 };
 
 export default meta;
