@@ -67,7 +67,7 @@ export const WwConfirmModal: FC<WwConfirmModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onCancel}
-      blocking
+      blocking={false}
       modalClassName={modalClassName}
       dialogClassName={dialogClassName}
       contentClassName={contentClassName}
@@ -77,7 +77,7 @@ export const WwConfirmModal: FC<WwConfirmModalProps> = ({
       <ModalHeader
         onClose={onCancel}
         title={titleLine || 'Are you sure?'}
-        disableCloseButton={!isConfirming}
+        disableCloseButton={isConfirming}
         headerClassName={headerClassName}
         titleClassName={headerTitleClassName}
         h1ClassName={headerH1ClassName}

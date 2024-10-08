@@ -92,6 +92,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
           onClick={onClose}
           type="button"
           className={miniClsx('ww_modal-header-close', closeBtnClassName)}
+          style={{ cursor: disableCloseButton ? 'not-allowed' : 'pointer' }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
