@@ -4,7 +4,7 @@ import { BootstrapColourVariants } from '../colourVariants';
 
 type LoadingType = 'border' | 'grow';
 
-type LoadingBaseProps = {
+type BsLoadingBaseProps = {
   className?: string;
   colour?: BootstrapColourVariants;
   // Note: Bootstrap 5.x.x doesn't support lg. We can make a custom class but so far hasn't had a use case for it.
@@ -13,7 +13,7 @@ type LoadingBaseProps = {
   type?: LoadingType;
 };
 
-const LoadingBase: FC<LoadingBaseProps> = ({
+const BsLoadingBase: FC<BsLoadingBaseProps> = ({
   type,
   colour,
   size,
@@ -40,34 +40,34 @@ const LoadingBase: FC<LoadingBaseProps> = ({
   );
 };
 
-type LoadingProps = LoadingBaseProps & {
+type LoadingProps = BsLoadingBaseProps & {
   centered?: boolean;
 };
 
 // Note: If colour not specified, primary is used.
 // Defaults to Spinner Border if type not provided.
-/** @deprecated: use BsLoading instead. */
-export const Loading: FC<LoadingProps> = ({
+export const BsLoading: FC<LoadingProps> = ({
   centered,
   ...loadingBaseProps
 }) => {
   if (centered) {
     return (
       <div className="text-center">
-        <LoadingBase {...loadingBaseProps} />
+        <BsLoadingBase {...loadingBaseProps} />
       </div>
     );
   }
-  return <LoadingBase {...loadingBaseProps} />;
+  return <BsLoadingBase {...loadingBaseProps} />;
 };
 
-type FullPageLoadingProps = {
+type BsFullPageLoadingProps = {
   className?: string;
 };
 
-/** @deprecated: use BsFullPageLoading instead. */
-export const FullPageLoading: FC<FullPageLoadingProps> = ({ className }) => (
+export const BsFullPageLoading: FC<BsFullPageLoadingProps> = ({
+  className,
+}) => (
   <div className={clsx('container', className)}>
-    <Loading centered type="grow" />
+    <BsLoading centered type="grow" />
   </div>
 );

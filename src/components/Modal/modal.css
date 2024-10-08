@@ -4,6 +4,7 @@
 
 .ww_modal {
   --ww-modal-header-color: #333;
+  --ww-modal-header-disabled-color: #c3c3c3;
   --ww-modal-header-bg: #333;
   --ww-modal-padding-base: 1rem;
   --ww-modal-width: 640px;
@@ -99,6 +100,10 @@
 .ww_modal-header-close svg:hover,
 .ww_modal-header-close svg:focus-visible {
   fill: #ff3c4b !important;
+}
+
+.ww_modal-header-close:disabled svg {
+  fill: var(--ww-modal-header-disabled-color) !important;
 }
 
 .ww_modal-header-title-h1 {

@@ -9,7 +9,7 @@ export type ConfirmModalConfig = {
   dontAutoCloseOnSuccess?: boolean;
   isPositiveAction?: boolean;
   onConfirm: () => Promise<void>;
-  size?: 'lg' | 'sm' | 'xl';
+  size?: 'lg' | 'sm' | 'xl' | 'fullscreen';
   titleLine?: string;
 };
 

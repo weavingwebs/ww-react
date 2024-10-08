@@ -1,16 +1,15 @@
 import { makeArrayFromRange } from '../../util';
-import { TableResults, TableResultsProps } from '../../components/TableResults';
+import { BsWwTableResults, BsWwTableResultsProps } from '../BsWwTableResults';
 
-/** @deprecated: use BsWwTableResultsWithPlaceholderProps instead. */
-export type TableResultsWithPlaceholderProps<T> = TableResultsProps<T> & {
-  placeholderRowCount: number;
-};
+export type BsWwTableResultsWithPlaceholderProps<T> =
+  BsWwTableResultsProps<T> & {
+    placeholderRowCount: number;
+  };
 
-/** @deprecated: use BsWwTableResultsWithPlaceholder instead. */
-export const TableResultsWithPlaceholder = <T extends {}>({
+export const BsWwTableResultsWithPlaceholder = <T extends {}>({
   placeholderRowCount,
   ...props
-}: TableResultsWithPlaceholderProps<T>) => {
+}: BsWwTableResultsWithPlaceholderProps<T>) => {
   if (props.isLoading) {
     return (
       <>
@@ -27,5 +26,5 @@ export const TableResultsWithPlaceholder = <T extends {}>({
     );
   }
 
-  return <TableResults {...props} />;
+  return <BsWwTableResults {...props} />;
 };

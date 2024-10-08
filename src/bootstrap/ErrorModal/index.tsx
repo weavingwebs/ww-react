@@ -9,6 +9,7 @@ type ErrorModalProps = PropsWithChildren & {
   title?: string;
 };
 
+/** @deprecated: use BsWwErrorModal instead. */
 export const ErrorModal: FC<ErrorModalProps> = ({
   error,
   onClose,
