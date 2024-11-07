@@ -44,7 +44,7 @@ export const BsConfirmModal: FC<BsConfirmModalProps> = ({
       scrollable={false}
       // Don't allow dismissing while confirming.
       backdrop={isConfirming ? 'static' : undefined}
-      size={size}
+      size={size !== 'fullscreen' ? size : undefined}
       animation={false}
     >
       <BootstrapModal.Header closeButton={!isConfirming}>
