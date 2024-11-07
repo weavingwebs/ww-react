@@ -1,21 +1,18 @@
 import { FC } from 'react';
 import { Meta } from '@storybook/react';
-import { Button } from '../../bootstrap/Button';
 import { useConfirmModal } from '../../hooks/useConfirmModal';
-import { BsConfirmModal } from '../../bootstrap';
+import { ModalContextProvider } from '../../components';
+import { BsWwConfirmModal } from '../../bootstrap';
 
-export const BsConfirmModalExample: FC = () => {
+export const BsWwConfirmModalExample: FC = () => {
   const confirmModalState = useConfirmModal();
 
   return (
     <div>
-      <h1>Deprecated</h1>
-      <p className="mb-3">
-        This component is now deprecated, use BsWwConfirmModal instead.{' '}
-      </p>
       <div className="mb-3">
-        <Button
-          variant="primary"
+        <button
+          type="button"
+          className="btn btn-primary"
           onClick={() =>
             confirmModalState.showConfirm({
               onConfirm: async () => {
@@ -31,13 +28,15 @@ export const BsConfirmModalExample: FC = () => {
           }
         >
           Open modal (successful confirm)
-        </Button>
+        </button>
       </div>
       <div className="mb-3">
-        <Button
-          variant="primary"
+        <button
+          type="button"
+          className="btn btn-primary"
           onClick={() =>
             confirmModalState.showConfirm({
+              size: 'fullscreen',
               onConfirm: async () => {
                 await new Promise((resolve, reject) => {
                   setTimeout(() => {
@@ -49,11 +48,12 @@ export const BsConfirmModalExample: FC = () => {
           }
         >
           Open modal (failed confirm)
-        </Button>
+        </button>
       </div>
       <div>
-        <Button
-          variant="primary"
+        <button
+          type="button"
+          className="btn btn-primary"
           onClick={() =>
             confirmModalState.showConfirm({
               dontAutoCloseOnSuccess: true,
@@ -70,17 +70,19 @@ export const BsConfirmModalExample: FC = () => {
           }
         >
           {`Open modal (successful confirm & don't auto-close on success)`}
-        </Button>
+        </button>
       </div>
 
-      <BsConfirmModal {...confirmModalState} />
+      <ModalContextProvider>
+        <BsWwConfirmModal {...confirmModalState} />
+      </ModalContextProvider>
     </div>
   );
 };
 
 const meta: Meta = {
-  title: 'Bootstrap/BsConfirmModal (deprecated)',
-  component: BsConfirmModalExample,
+  title: 'Bootstrap/BsWwConfirmModal',
+  component: BsWwConfirmModalExample,
 };
 
 export default meta;

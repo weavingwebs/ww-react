@@ -5,6 +5,7 @@ import { useAsync, useConfirmModal } from '../../hooks';
 
 type BsConfirmModalProps = ReturnType<typeof useConfirmModal>;
 
+/** @deprecated: use BsWwConfirmModal instead */
 export const BsConfirmModal: FC<BsConfirmModalProps> = ({
   titleLine,
   confirmLine,
@@ -43,7 +44,7 @@ export const BsConfirmModal: FC<BsConfirmModalProps> = ({
       scrollable={false}
       // Don't allow dismissing while confirming.
       backdrop={isConfirming ? 'static' : undefined}
-      size={size}
+      size={size !== 'fullscreen' ? size : undefined}
       animation={false}
     >
       <BootstrapModal.Header closeButton={!isConfirming}>
