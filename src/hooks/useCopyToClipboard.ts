@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// IMPORTANT: Always just copy an existing string as a result of a click, never do anything in between (e.g. a query).
 export const useCopyToClipboard = () => {
   const [hasCopiedToClipboard, setHasCopiedToClipboard] = useState(false);
 
@@ -19,7 +20,9 @@ export const useCopyToClipboard = () => {
         // eslint-disable-next-line no-console
         console.error(err);
         // eslint-disable-next-line no-alert
-        alert(`Sorry, this action has failed. ${err.message}`);
+        alert(
+          `Sorry, this action has failed. ${err.message}.\nAttempting to copy: ${text}`
+        );
       });
   };
 
