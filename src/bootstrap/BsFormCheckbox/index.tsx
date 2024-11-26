@@ -14,13 +14,13 @@ export type BsFormCheckboxProps<T extends FieldValues> = Omit<
   labelSpacer?: boolean;
 };
 
+/** NOTE: do not use with StringBool */
 export function BsFormCheckbox<T extends FieldValues>({
   labelSpacer,
   prefix,
   labelClassName,
   inputWrapperClassName,
   inputClassName,
-  className,
   ...props
 }: BsFormCheckboxProps<T>): ReactElement | null {
   const prefixAndSpacer = useMemo(() => {

@@ -43,6 +43,7 @@ export type FormCheckboxProps<T extends FieldValues> = {
   required?: boolean;
 };
 
+/** NOTE: do not use with StringBool */
 export function FormCheckbox<T extends FieldValues>({
   FormErrorComponent,
   FormLabelComponent,
