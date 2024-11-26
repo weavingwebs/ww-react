@@ -26,3 +26,5 @@ export * from './BsWwTableResultsWithPlaceholder';
 export * from './BsWwPagination';
 export * from './BsWwConfirmModal';
 export * from './BsWwErrorModal';
+export * from './BsErrorMessage';
+export * from './BsLoading';
