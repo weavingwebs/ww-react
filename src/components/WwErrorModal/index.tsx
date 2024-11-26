@@ -1,17 +1,17 @@
 import { ComponentType, FC, PropsWithChildren } from 'react';
 import { Modal, ModalBody, ModalHeader, ModalStyleProps } from '../Modal';
-import { BsErrorMessage } from '../../bootstrap/BsErrorMessage';
 
-export type WwErrorModalBaseProps = {
+export type WwErrorModalBaseProps = PropsWithChildren & {
   error: Error | null;
   onClose: () => void;
   title?: string;
 };
 
 export type WwErrorModalProps = WwErrorModalBaseProps &
-  ModalStyleProps &
-  PropsWithChildren & {
+  ModalStyleProps & {
     CloseButtonComponent: ComponentType<{ onClick: () => void }>;
+    ErrorMessageComponent: ComponentType<{ error: Error | null }>;
+    actionsContainerClassName?: string;
     headerClassName?: string;
     headerH1ClassName?: string;
     headerTitleClassName?: string;
@@ -23,9 +23,11 @@ export const WwErrorModal: FC<WwErrorModalProps> = ({
   title,
   children,
   CloseButtonComponent,
+  ErrorMessageComponent,
   headerClassName,
   headerH1ClassName,
   headerTitleClassName,
+  actionsContainerClassName,
   modalClassName,
   dialogClassName,
   contentClassName,
@@ -55,9 +57,9 @@ export const WwErrorModal: FC<WwErrorModalProps> = ({
         h1ClassName={headerH1ClassName}
       />
       <ModalBody>
-        <BsErrorMessage error={error} className="mb-0" />
+        <ErrorMessageComponent error={error} />
         {children}
-        <div>
+        <div className={actionsContainerClassName}>
           <CloseButtonComponent onClick={onClose} />
         </div>
       </ModalBody>

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { WwErrorModal, WwErrorModalBaseProps } from '../../components';
+import { BsErrorMessage } from '../BsErrorMessage';
 
 const BsWwErrorModalCloseButtonComponent: FC<{ onClick: () => void }> = ({
   onClick,
@@ -11,6 +12,10 @@ const BsWwErrorModalCloseButtonComponent: FC<{ onClick: () => void }> = ({
   );
 };
 
+const BsWwErrorMessageComponent: FC<{ error: Error | null }> = ({ error }) => {
+  return <BsErrorMessage error={error} />;
+};
+
 type BsWwErrorModalProps = WwErrorModalBaseProps;
 
 export const BsWwErrorModal: FC<BsWwErrorModalProps> = (props) => {
@@ -18,6 +23,8 @@ export const BsWwErrorModal: FC<BsWwErrorModalProps> = (props) => {
     <WwErrorModal
       {...props}
       CloseButtonComponent={BsWwErrorModalCloseButtonComponent}
+      ErrorMessageComponent={BsWwErrorMessageComponent}
+      actionsContainerClassName="mt-3"
     />
   );
 };
