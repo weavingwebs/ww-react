@@ -30,7 +30,7 @@ export const BsFormLabel: FC<FormLabelProps> = ({
 
   return (
     <Component
-      className={clsx('form-label fs-6', className)}
+      className={clsx('form-label', { 'fs-6': as === 'legend' }, className)}
       style={style}
       {...componentProps}
     >
