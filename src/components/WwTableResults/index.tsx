@@ -5,6 +5,7 @@ export type WwTableResultsBaseProps<T> = {
   error: Error | null;
   errorPrefix?: string /** @deprecated: wrap errors with cause */;
   isLoading: boolean;
+  noResultsMessage?: string;
   renderRow: (row: T) => ReactNode;
   results: T[] | null | undefined;
 };
@@ -21,6 +22,7 @@ export function WwTableResults<T extends {}>({
   results,
   columnCount,
   renderRow,
+  noResultsMessage,
   ErrorComponent,
   FullPageLoadingComponent,
 }: WwTableResultsProps<T>) {
@@ -47,7 +49,7 @@ export function WwTableResults<T extends {}>({
   if (!results?.length) {
     return (
       <tr>
-        <td colSpan={columnCount}>No results found.</td>
+        <td colSpan={columnCount}>{noResultsMessage || 'No results found.'}</td>
       </tr>
     );
   }
