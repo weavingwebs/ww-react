@@ -3,19 +3,20 @@ import { FC, PropsWithChildren } from 'react';
 import { FaExclamationTriangle } from 'react-icons/fa';
 import { unwrapErrorToString } from '../../util';
 
-export type BsErrorMessageProps = PropsWithChildren & {
+export type WwErrorMessageProps = PropsWithChildren & {
   className?: string;
   error: Error | null;
   prefix?: string;
   reloadButton?: boolean;
+  reloadButtonClassName?: string;
 };
 
-// @todo: wrap WwErrorMessage.
-export const BsErrorMessage: FC<BsErrorMessageProps> = ({
+export const WwErrorMessage: FC<WwErrorMessageProps> = ({
   error,
   className,
   prefix,
   reloadButton,
+  reloadButtonClassName,
   children,
 }) => {
   if (!error) {
@@ -27,15 +28,15 @@ export const BsErrorMessage: FC<BsErrorMessageProps> = ({
     errorMessage = `${prefix}: ${errorMessage}`;
   }
   return (
-    <div className={clsx('alert alert-danger', className)}>
-      <FaExclamationTriangle className="me-2" />
+    <div className={clsx(className)}>
+      <FaExclamationTriangle style={{ marginRight: '5px' }} />
       {errorMessage}
       {children}
       {reloadButton && (
-        <div className="mt-2">
+        <div style={{ marginTop: '5px' }}>
           <button
             type="button"
-            className="btn btn-primary"
+            className={reloadButtonClassName}
             onClick={() => window.location.reload()}
           >
             Reload page
