@@ -14,3 +14,4 @@ export * from './WwPagination';
 export * from './WwConfirmModal';
 export * from './WwErrorModal';
 export * from './WwErrorMessage';
+export * from './WwTurnstile';

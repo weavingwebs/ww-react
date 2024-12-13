@@ -1,0 +1,34 @@
+.ww_turnstile-turnstile {
+  margin-bottom: 5px;
+  min-height: 24px;
+}
+
+.ww_turnstile-action_container {
+  display: flex;
+}
+
+.ww_turnstile-loading {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.ww_turnstile-loading.hidden {
+  opacity: 0;
+}
+
+.ww_turnstile-loading-msg {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+.ww_turnstile.loading_on_left {
+  .ww_turnstile-loading {
+    margin-right: 10px;
+    margin-left: 0;
+  }
+  .ww_turnstile-action_container {
+    flex-direction: row-reverse;
+  }
+}

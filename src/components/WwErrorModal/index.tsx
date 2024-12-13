@@ -1,16 +1,30 @@
-import { ComponentType, FC, PropsWithChildren } from 'react';
+import { ComponentType, FC, PropsWithChildren, ReactNode } from 'react';
 import { Modal, ModalBody, ModalHeader, ModalStyleProps } from '../Modal';
 
 export type WwErrorModalBaseProps = PropsWithChildren & {
+  additionalAction?: ReactNode;
+  closeActionLabel?: string;
   error: Error | null;
   onClose: () => void;
+  // eslint-disable-next-line react/no-unused-prop-types
+  prefix?: string;
   title?: string;
+};
+
+export type WwModalCloseButtonComponentProps = {
+  label?: string;
+  onClick: () => void;
+};
+
+export type WwModalErrorMessageComponentProps = {
+  error: Error | null;
+  prefix?: string;
 };
 
 export type WwErrorModalProps = WwErrorModalBaseProps &
   ModalStyleProps & {
-    CloseButtonComponent: ComponentType<{ onClick: () => void }>;
-    ErrorMessageComponent: ComponentType<{ error: Error | null }>;
+    CloseButtonComponent: ComponentType<WwModalCloseButtonComponentProps>;
+    ErrorMessageComponent: ComponentType<WwModalErrorMessageComponentProps>;
     actionsContainerClassName?: string;
     headerClassName?: string;
     headerH1ClassName?: string;
@@ -33,6 +47,9 @@ export const WwErrorModal: FC<WwErrorModalProps> = ({
   contentClassName,
   unstyled,
   dialogStyles,
+  closeActionLabel,
+  additionalAction,
+  prefix,
 }) => {
   if (!error) {
     return null;
@@ -57,10 +74,11 @@ export const WwErrorModal: FC<WwErrorModalProps> = ({
         h1ClassName={headerH1ClassName}
       />
       <ModalBody>
-        <ErrorMessageComponent error={error} />
+        <ErrorMessageComponent error={error} prefix={prefix} />
         {children}
         <div className={actionsContainerClassName}>
-          <CloseButtonComponent onClick={onClose} />
+          <CloseButtonComponent onClick={onClose} label={closeActionLabel} />
+          {additionalAction}
         </div>
       </ModalBody>
     </Modal>

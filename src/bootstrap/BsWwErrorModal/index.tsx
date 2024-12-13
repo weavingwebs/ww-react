@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import clsx from 'clsx';
 import { WwErrorModal, WwErrorModalBaseProps } from '../../components';
 import { BsErrorMessage } from '../BsErrorMessage';
 
@@ -12,8 +13,11 @@ const BsWwErrorModalCloseButtonComponent: FC<{ onClick: () => void }> = ({
   );
 };
 
-const BsWwErrorMessageComponent: FC<{ error: Error | null }> = ({ error }) => {
-  return <BsErrorMessage error={error} />;
+const BsWwErrorMessageComponent: FC<{
+  error: Error | null;
+  prefix?: string;
+}> = ({ error, prefix }) => {
+  return <BsErrorMessage error={error} prefix={prefix} />;
 };
 
 type BsWwErrorModalProps = WwErrorModalBaseProps;
@@ -24,7 +28,13 @@ export const BsWwErrorModal: FC<BsWwErrorModalProps> = (props) => {
       {...props}
       CloseButtonComponent={BsWwErrorModalCloseButtonComponent}
       ErrorMessageComponent={BsWwErrorMessageComponent}
-      actionsContainerClassName="mt-3"
+      actionsContainerClassName={clsx('mt-3 d-flex')}
+      modalClassName={clsx('modal')}
+      dialogClassName={clsx('modal-dialog modal-dialog-centered')}
+      contentClassName={clsx('modal-content')}
+      headerClassName={clsx('modal-header')}
+      headerTitleClassName={clsx('modal-title')}
+      unstyled
     />
   );
 };

@@ -28,3 +28,4 @@ export * from './BsWwConfirmModal';
 export * from './BsWwErrorModal';
 export * from './BsErrorMessage';
 export * from './BsLoading';
+export * from './BsWwTurnstile';

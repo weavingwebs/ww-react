@@ -94,6 +94,7 @@
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
     "@hookform/resolvers": "^3.3.4",
+    "@marsidev/react-turnstile": "^1.1.0",
     "@ryansonshine/commitizen": "4.2.8",
     "@ryansonshine/cz-conventional-changelog": "3.3.4",
     "@storybook/addon-docs": "^7.4.5",
@@ -166,7 +167,8 @@
     "react-hook-form": "^7.49.3",
     "yup": "^1.0.0",
     "big.js": "^6.0.0",
-    "@types/big.js": "^6.0.0"
+    "@types/big.js": "^6.0.0",
+    "@marsidev/react-turnstile": "^1.1.0"
   },
   "resolutions": {
     "glob-parent": ">=5.1.2",
