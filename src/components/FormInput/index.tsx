@@ -79,6 +79,8 @@ export type FormInputBaseProps<T extends FieldValues> = {
   // Pre-input wrapper JSX (i.e. label spacer).
   prefix?: ReactNode;
   required?: boolean;
+  // Suffixes label with red "*".
+  requiredIndicator?: boolean;
   step?: string;
   style?: CSSProperties;
 };
@@ -97,6 +99,7 @@ export function FormInput<T extends FieldValues>({
   HelpTextComponent,
   name,
   required,
+  requiredIndicator,
   label,
   className,
   inputClassName,
@@ -147,7 +150,7 @@ export function FormInput<T extends FieldValues>({
       {label && (
         <FormLabelComponent
           htmlFor={id}
-          required={required}
+          required={required || requiredIndicator}
           className={labelClassName}
         >
           {label}
