@@ -310,6 +310,9 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
             !unstyled && 'ww_modal-content',
             contentClassName
           )}
+          // Fix overflow problems with content not filling available space when something's overflowing.
+          // Especially when modal is bs fullscreen.
+          style={{ overflow: 'auto' }}
           onClick={(ev) => ev.stopPropagation()}
         >
           {children}
