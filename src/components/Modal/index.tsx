@@ -235,7 +235,6 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
     activeModalId.current = openModals.at(-1);
   }, [openModals]);
 
-  // @todo: Is this optimised?
   useEffect(() => {
     pushToOpenModals(id);
 
@@ -243,7 +242,6 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
     documentRef.current?.body.classList.add('ww_modal-overflow_hidden');
 
     return () => {
-      // @todo: this is now outdated logic, find a better way to identify OUR modals.
       const isAnotherModalMounted = !!documentRef.current
         ?.getElementsByClassName('ww_modal')
         .item(0);
@@ -251,14 +249,11 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
       if (!isAnotherModalMounted) {
         documentRef.current?.body.classList.remove('ww_modal-overflow_hidden');
       }
-
       removeFromOpenModals(id);
     };
   }, []);
 
-  // handle esc key
-  // @todo: currently it closes all modals except the blocking one (wrong!)
-  // @todo: should only attempt to close current modal and leave the others.
+  // Handle ESC key.
   useEffect(() => {
     // Just don't run if a blocking modal.
     if (blocking) {
@@ -282,11 +277,10 @@ const ModalInner: FC<Omit<ModalProps, 'isOpen'>> = ({
     };
   }, [blocking]);
 
-  // @todo: Make custom styles and allow their overriding.
-  // @todo: document style customisation.
   // @todo: a11y
   return createPortal(
     <div
+      // NOTE: .ww_modal class is crucial to identify what modals are mounted.
       className={miniClsx('ww_modal', modalClassName)}
       data-blocking={!!blocking}
       data-id={id}
