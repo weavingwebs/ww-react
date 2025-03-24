@@ -59,6 +59,7 @@ export type FormInputBaseProps<T extends FieldValues> = {
   className?: string;
   disabled?: boolean;
   helpText?: ReactNode;
+  hideErrorMessage?: boolean;
   // Input className.
   inputClassName?: string;
   inputInvalidClassName?: string;
@@ -111,6 +112,7 @@ export function FormInput<T extends FieldValues>({
   inputWrapperClassName,
   inputSuffix,
   onChange,
+  hideErrorMessage,
   ...asProps
 }: FormInputProps<T>): ReactElement | null {
   const id = useId();
@@ -189,7 +191,9 @@ export function FormInput<T extends FieldValues>({
       {helpText && (
         <HelpTextComponent ariaDescribedBy={id}>{helpText}</HelpTextComponent>
       )}
-      {error && <FormErrorComponent id={`${name}Error`} error={error} />}
+      {!hideErrorMessage && error && (
+        <FormErrorComponent id={`${name}Error`} error={error} />
+      )}
     </div>
   );
 }
