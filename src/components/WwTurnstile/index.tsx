@@ -29,7 +29,7 @@ export type WwTurnstileProps = PropsWithChildren &
     turnstileSiteKey: string;
   };
 
-export type Props = WwTurnstileProps & {
+type Props = WwTurnstileProps & {
   ErrorModalComponent: ComponentType<WwErrorModalBaseProps>;
   TryAgainButtonComponent: ComponentType<
     PropsWithChildren<{ onClick: () => void }>
@@ -53,7 +53,6 @@ export const WwTurnstile: FC<Props> = ({
 }) => {
   const [turnstileError, setTurnstileError] = useState<Error | null>(null);
 
-  // const ErrorModal = ErrorModalComponent;
   return (
     <div
       className={clsx('ww_turnstile', className, {
