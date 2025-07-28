@@ -84,7 +84,7 @@
     }
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.22.11",
@@ -142,7 +142,7 @@
     "jsdom": "^22.1.0",
     "lint-staged": "14.0.1",
     "lodash": "^4.17.21",
-    "next": "^13.5.3",
+    "next": "^15",
     "next-router-mock": "^0.9.10",
     "prettier": "3.0.3",
     "prop-types": "15.8.1",
@@ -153,7 +153,7 @@
     "react-test-renderer": "18.2.0",
     "release-it": "16.1.5",
     "storybook": "7.4.0",
-    "tsup": "7.2.0",
+    "tsup": "^8.5.0",
     "typescript": "5.2.2",
     "vitest": "^0.34.0",
     "yalc": "1.0.0-pre.53",
@@ -164,10 +164,10 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17",
-    "react-hook-form": "^7.49.3",
+    "react-hook-form": "^7",
     "yup": "^1.0.0",
-    "big.js": "^6.0.0",
-    "@types/big.js": "^6.0.0",
+    "big.js": "^6",
+    "@types/big.js": "^6",
     "@marsidev/react-turnstile": "^1.1.0"
   },
   "resolutions": {
