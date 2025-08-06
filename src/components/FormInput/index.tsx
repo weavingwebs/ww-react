@@ -12,6 +12,7 @@ import {
   JSX,
   ReactElement,
   ReactNode,
+  FocusEvent,
   useId,
 } from 'react';
 import clsx from 'clsx';
@@ -74,6 +75,9 @@ export type FormInputBaseProps<T extends FieldValues> = {
   max?: string | number;
   min?: string | number;
   name: Path<T>;
+  onBlur?: (
+    ev: FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => void;
   onChange?: (
     ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => boolean;
@@ -144,7 +148,7 @@ export function FormInput<T extends FieldValues>({
       Component = 'input';
     }
   }
-  const { as, ...inputProps } = asProps;
+  const { as, onBlur, ...inputProps } = asProps;
 
   return (
     <div className={className} aria-live="polite">
@@ -172,6 +176,9 @@ export function FormInput<T extends FieldValues>({
             const { value } = ev.target;
             field.onChange(value.trim());
             field.onBlur();
+            if (onBlur) {
+              onBlur(ev);
+            }
           }}
           onChange={(ev) => {
             if (onChange && !onChange(ev)) {
