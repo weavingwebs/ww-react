@@ -4,6 +4,7 @@ import { ModalReducerCloseAction, ModalReducerState } from './useModal';
 export type ConfirmModalConfig = {
   cancelBtnLabel?: string;
   confirmBtnLabel?: ReactNode;
+  confirmButtonDisabled?: boolean;
   confirmButtonStyle?: CSSProperties;
   confirmLine?: ReactNode;
   dontAutoCloseOnSuccess?: boolean;
