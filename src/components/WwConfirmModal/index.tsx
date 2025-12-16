@@ -34,6 +34,7 @@ export const WwConfirmModal: FC<WwConfirmModalProps> = ({
   ErrorComponent,
   LoadingComponent,
   confirmButtonClassName,
+  confirmButtonDisabled,
   confirmLineContainerClassName,
   cancelButtonClassName,
   actionsContainerClassName,
@@ -110,7 +111,7 @@ export const WwConfirmModal: FC<WwConfirmModalProps> = ({
                 }
               });
             }}
-            disabled={isConfirming}
+            disabled={confirmButtonDisabled || isConfirming}
             className={clsx(confirmButtonClassName)}
             style={{ minWidth: '85px', ...confirmButtonStyle }}
           >
